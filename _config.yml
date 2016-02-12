@@ -14,7 +14,7 @@ defaults:
     scope:
       path: "" # empty string for all files
     values:
-      title: I like to do things.
+      title: I like to learn everything.
 
 description: A guy with big dreams.
 author:
