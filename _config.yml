@@ -8,6 +8,7 @@ markdown: kramdown
 disqus: 
 google_analytics: 
 baseurl: ""
+
 defaults:
   -
     scope:
