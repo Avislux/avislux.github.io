@@ -40,13 +40,13 @@ div {
     background-color: aquamarine;
 }
 #box3 {
-    background-color: darkslategray;
+    background-color: linen;
 }
 #box1>.corner {
      background-color: olive;
  }
 #box2>.corner {
-    background-color: green;
+    background-color: lightgreen;
 }
 #box3>.corner {
     background-color: paleturquoise;
