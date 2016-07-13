@@ -15,7 +15,7 @@ a > div >h1 {
     color: black;
 }
 body{
-    padding-top:70px;
+    /*padding-top:70px;*/
     background-color: #00ACEE;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
