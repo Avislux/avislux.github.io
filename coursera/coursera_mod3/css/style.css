@@ -1,0 +1,45 @@
+/*lecture 24
+992 or above desktop
+768 - 991 tablet*/
+*{
+    box-sizing: border-box;
+}
+.navbar {
+    background-color: #1b6d85;
+    color: black;
+}
+a > div >h1 {
+    color:black;
+}
+.navbar-default .navbar-nav >li >a{
+    color: black;
+}
+body{
+    padding-top:70px;
+    background-color: #00ACEE;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.navbar-brand {
+   /* margin-left: 0;*/
+
+}
+.title {
+    padding-top: 5px;
+}
+.box{
+    margin: 5px;
+    border : 1px solid black;
+    min-height: 1000px;
+}
+.content{
+    padding: 10px;
+}
+#chicken {
+    background-color: #953b39;
+}
+#beef{
+    background-color: aquamarine;
+}
+#sushi {
+    background-color: linen;
+}
