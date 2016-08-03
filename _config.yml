@@ -1,7 +1,7 @@
 # visit https://github.com/mojombo/jekyll/wiki/Configuration for more settings
 gems: [jekyll-paginate]
 paginate: 10 # pagination based on number of posts
-paginate_path: "page:num"
+paginate_path: "/blog/page:num/"
 exclude: ["README.md"] # files to exclude
 highlighter: rouge
 markdown: kramdown
@@ -14,7 +14,7 @@ defaults:
     scope:
       path: "" # empty string for all files
     values:
-      title: I like to learn everything.
+      title: I like to do things.
 
 description: A guy with big dreams.
 author:
