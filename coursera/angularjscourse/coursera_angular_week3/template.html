@@ -1,0 +1,9 @@
+<!--<h3>Title: {{ narrow.myTitle }}</h3>-->
+<ol>
+  <li ng-repeat="item in narrow.foundItems" >
+     {{item.short_name}} {{ item.name }} {{item.description}}
+
+    <button ng-click="narrow.onRemove({index: $index});">I don't want this one!</button>
+  </li>
+</ol>
+<div class="error" ng-if="narrowD.error()">Error.</div>
