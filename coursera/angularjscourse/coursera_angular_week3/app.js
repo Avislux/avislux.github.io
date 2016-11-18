@@ -11,41 +11,51 @@
     function NarrowItDownController (MenuSearchService) {
         var narrow = this;
         narrow.searchTerm = "";
+
         narrow.getMatchedMenuItems = function(){
-            var promise = MenuSearchService.getMatchedMenuItems();
-            promise.then(function (result) {
-                console.log(narrow.searchTerm);
-                console.log(result.data);
-                console.log(result.data.menu_items[0]);
-                var foundItems = [];
-                for(var i=0; i < result.data.menu_items.length; i++){
-                    if (result.data.menu_items[i].description.search(narrow.searchTerm) != -1){
-                        console.log(result.data.menu_items[i]);
-                        foundItems.push(result.data.menu_items[i]);
-                    }
-                }
-                console.log("found items: ", foundItems);
-                narrow.foundItems = foundItems;
-                return foundItems;
-            });
+
+            var promise = MenuSearchService.getMatchedMenuItems(narrow.searchTerm);
+            console.log("promise", promise, promise.$$state);
+            narrow.foundItems = promise;
 
         };
 
         narrow.removeItem = function(index){
             narrow.foundItems.splice(index, 1);
-        }
+        };
+
+        narrow.error = function () {
+            //console.log(NarrowItDownController.searchTerm == "", searchTerm);
+            //console.log(NarrowItDownController.foundItems == [],NarrowItDownController.foundItems);
+            return (narrow.searchTerm == "" || narrow.foundItems == [] )
+        };
+
     }
 
     MenuSearchService.$inject = ['$http', 'ApiBasePath'];
     function  MenuSearchService($http, ApiBasePath){
        var service = this;
-        service.getMatchedMenuItems = function (){
+        service.getMatchedMenuItems = function (searchTerm){
             return $http({
                     method:"GET",
                     url:(ApiBasePath)
                 }
 
-            )
+            ).then(function (result) {
+                console.log(searchTerm);
+                console.log(result.data);
+                //console.log(result.data.menu_items[0]);
+                var foundItems = [];
+                for(var i=0; i < result.data.menu_items.length; i++){
+                    if (result.data.menu_items[i].description.search(searchTerm) != -1){
+                        console.log(result.data.menu_items[i]);
+                        foundItems.push(result.data.menu_items[i]);
+                    }
+                }
+                console.log("found items: ", foundItems);
+
+                return foundItems;
+            });
         };
 
     }
@@ -57,25 +67,13 @@
                 items: '<',
                 onRemove: '&'
             },
-            controller: NarrowDownDirectiveController,
-            controllerAs: 'narrowD',
+            controller: NarrowItDownController,
+            controllerAs: 'narrow',
             bindToController: true
         };
 
         return ddo;
     }
-    function NarrowDownDirectiveController() {
-        var narrowD = this;
-        var searchTerm = NarrowItDownController.searchTerm;
-        narrowD.error = function () {
-            console.log(NarrowItDownController.searchTerm == "", searchTerm);
-            console.log(NarrowItDownController.foundItems == [],NarrowItDownController.foundItems);
-            return (NarrowItDownController.searchTerm == "" || NarrowItDownController.foundItems == [] )
-        };
-
-
-    }
-
 
 })();
 
