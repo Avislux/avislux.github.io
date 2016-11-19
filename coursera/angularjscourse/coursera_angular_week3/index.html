@@ -18,19 +18,12 @@
       <button ng-click="narrow.getMatchedMenuItems()" class="btn btn-primary">Narrow It Down For Me!</button>
     </div>
        <br><br><br>
-      <!--<ol>
-           <li ng-repeat="item in narrow.foundItems">
-               {{item.short_name}} {{ item.name }} {{item.description}}
 
-               <button ng-click="narrow.onRemove({index: $index});">Remove Item</button>
-           </li>
-       </ol>-->
     <found-items
                  items="narrow.foundItems"
                  on-remove="narrow.removeItem(index)">
 
     </found-items>
-<!-- -->
 
   </div>
    <script src="angular.min.js"></script>

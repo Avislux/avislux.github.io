@@ -11,23 +11,26 @@
     function NarrowItDownController (MenuSearchService) {
         var narrow = this;
         narrow.searchTerm = "";
-
+        narrow.foundItems = [];
         narrow.getMatchedMenuItems = function(){
 
             var promise = MenuSearchService.getMatchedMenuItems(narrow.searchTerm);
-            console.log("promise", promise, promise.$$state);
-            narrow.foundItems = promise;
+            promise.then(function(items){
+                narrow.foundItems = items;
+                console.log("narrow.founditems", narrow.foundItems);
+                }
+            );
 
         };
 
         narrow.removeItem = function(index){
             narrow.foundItems.splice(index, 1);
+            console.log("Deleted ", index, "array: ", narrow.foundItems);
         };
 
         narrow.error = function () {
-            //console.log(NarrowItDownController.searchTerm == "", searchTerm);
-            //console.log(NarrowItDownController.foundItems == [],NarrowItDownController.foundItems);
-            return (narrow.searchTerm == "" || narrow.foundItems == [] )
+            //console.log("error check items:", narrow.items == [ ], narrow.items,narrow.items.length );
+            return ( narrow.items.length == 0 );
         };
 
     }
@@ -43,17 +46,25 @@
 
             ).then(function (result) {
                 console.log(searchTerm);
-                console.log(result.data);
+                console.log("result.data:  ",result.data);
                 //console.log(result.data.menu_items[0]);
-                var foundItems = [];
-                for(var i=0; i < result.data.menu_items.length; i++){
+                //var foundItems = [];
+                if (searchTerm == ''){return [];}
+                var foundItems = result.data.menu_items.filter(
+                    function(item){
+                        return item.description.search(searchTerm) != -1;
+                    }
+                );
+                /*for(var i=0; i < result.data.menu_items.length; i++){
                     if (result.data.menu_items[i].description.search(searchTerm) != -1){
                         console.log(result.data.menu_items[i]);
                         foundItems.push(result.data.menu_items[i]);
                     }
-                }
+                    else{
+                        result.data.menu_items.splice(i,1);
+                    }
+                }*/
                 console.log("found items: ", foundItems);
-
                 return foundItems;
             });
         };
