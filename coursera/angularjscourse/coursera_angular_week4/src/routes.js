@@ -17,7 +17,7 @@
             .state('categories',{
                     url:'/categories',
                     templateUrl: 'templates/main.categories.template.html',
-                    controller: 'MainController as main',
+                    controller: 'MainController as main'/*,
                     resolve: {
                         categories: ['MenuDataService', function (MenuDataService) {
                             console.log("Categories resolve called");
@@ -32,7 +32,7 @@
                             console.log("resolve.cat end", resolve.cat);
                             return resolve.cat;
                         }]
-                    }
+                    }*/
                 }
 
             )
