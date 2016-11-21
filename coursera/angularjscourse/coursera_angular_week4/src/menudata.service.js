@@ -1,22 +1,24 @@
 (function(){
+    'use strict';
     angular.module('Data')
         .service("MenuDataService",MenuDataService)
-        .constant("ApiPath", "https://davids-restaurant.herokuapp.com/categories.json");
-    MenuDataService.$inject= ["ApiPath"];
-    function MenuDataService(){
+
+    MenuDataService.$inject= ['$http'];
+    function MenuDataService($http){
         var service = this;
         service.getAllCategories = function(){
-            console.log("Service called");
+            console.log("Service.getAllCategories called");
             return $http({
                     method:"GET",
-                    url:(ApiPath)
+                    url:'https://davids-restaurant.herokuapp.com/categories.json'
                 }
-
             ).then(function (result) {
                 console.log("result.data:  ",result.data);
                 return result.data;
 
-            });
+            }
+
+            );
         };
         //- this method should return a promise which is a result of using the $http service, using the following REST API endpoint: https://davids-restaurant.herokuapp.com/categories.json
         service.getItemsForCategory = function(categoryShortName){

@@ -17,18 +17,28 @@
             .state('categories',{
                     url:'/categories',
                     templateUrl: 'templates/main.categories.template.html',
-                    //controller: 'MainController as main', //TODO: Make controller?
+                    controller: 'MainController as main',
                     resolve: {
-                        items: ['MenuDataService', function (MenuDataService) {
-                            return MenuDataService.getAllCategories();
+                        categories: ['MenuDataService', function (MenuDataService) {
+                            console.log("Categories resolve called");
+                            var resolve = this;
+                            var promise = MenuDataService.getAllCategories();
+                            promise.then(function(categories){
+                                console.log("resolve promise then cat", categories);
+                                resolve.cat = categories;
+                                console.log("resolve.cat", resolve.cat);
+                                }
+                            );
+                            console.log("resolve.cat end", resolve.cat);
+                            return resolve.cat;
                         }]
                     }
                 }
 
             )
             .state('items',{
-                    url:'/',
-                    templateUrl: ''
+                    url:'/items',
+                    templateUrl: 'templates/items.templates.html'
                 }
 
             );

@@ -4,7 +4,7 @@
         .component('categories',{
             templateUrl: 'templates/categories.template.html',
             bindings: {
-                items:'<'
+                categories:'<'
             }
         });
 //file and create component called categories that shows all available categories in the menu to the user.

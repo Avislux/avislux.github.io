@@ -1,6 +1,6 @@
 (function(){
     'use strict';
-    angular.module('MenuApp', ['Data', 'ui,router']); //declared
+    angular.module('MenuApp', ['Data', 'ui.router']); //declared
     angular.module('MenuApp')
         .config(function () {
             console.log("MenuApp config fired.");
