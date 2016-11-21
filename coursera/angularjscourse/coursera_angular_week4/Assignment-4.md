@@ -35,7 +35,7 @@ Breaking one of these rules will cause you to fail the assignment:
 
 ### Steps
 Here is what you will need to do to complete the assignment:
-
+<s>
 #### Steps for Setups (similar to all other assignments)
 1. (If you haven’t already) Create a GitHub.com account and a repository that you will use for this class.
 2. (If you haven’t already) Follow the Development Setup Video (beginning of Module 1) instructions on how to create a repository and set it up such that you can host and view your finished web pages on GitHub Pages, i.e., GitHub.io domain name. You will need to provide that URL for your peer review.
@@ -48,10 +48,10 @@ Here is what you will need to do to complete the assignment:
 #### General Steps for Implementing Assignment Requirements
 Suggestion: Read through all the requirements first and then come back to \#1 again. These are **not** necessarily listed in the order you should create them. Choose whatever order works for you. This list is simply an extended hint of how to implement a solution for this assignment.
 
-1. Declare `ng-app` either on the `html` or the `body` element. Name your app `MenuApp`.
+1. Declare `ng-app` either on the `html` or the `body` element. Name your app `MenuApp`.</s>
 2. You must follow the 1 artifact per file rule. That means if the JS file declares a controller, it should *not* declare anything else like a service or component and vice versa. Use a separate JS file to declare other artifacts in your application. *Don't forget to include each JS file in your `index.html`!*
-3. Create a file called `menuapp.module.js` and declare an Angular module to match your `ng-app` declaration.
-4. Create `data.module.js` file and declare another module in it called `data`. Make sure the `MenuApp` module lists the `data` module as a dependency.
+<s>3. Create a file called `menuapp.module.js` and declare an Angular module to match your `ng-app` declaration.
+4. Create `data.module.js` file and declare another module in it called `data`. Make sure the `MenuApp` module lists the `data` module as a dependency.</s>
 5. Create `menudata.service.js` file and create a service called `MenuDataService` in it. This service should be declared on the `data` module, *not* on the `MenuApp` module. The `MenuDataService` should have 2 methods:
   * `getAllCategories` - this method should return a promise which is a result of using the `$http` service, using the following REST API endpoint: https://davids-restaurant.herokuapp.com/categories.json
   * `getItemsForCategory(categoryShortName)` - this method should return a promise which is a result of using the `$http` service, using the following REST API endpoint: https://davids-restaurant.herokuapp.com/menu_items.json?category=, where, before the call to the server, your code should append whatever `categoryShortName` value was passed in as an argument into the `getItemsForCategory` method.
