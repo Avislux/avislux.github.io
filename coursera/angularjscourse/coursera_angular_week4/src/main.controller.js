@@ -5,20 +5,21 @@
         .controller('MainController', MainController);
 
 
-    MainController.$inject = ['MenuDataService'];
-    function MainController(MenuDataService) {
+    MainController.$inject = ['categories'];
+    function MainController(categories) {
         console.log("Main Controller Init");
         var main = this;
-        //main.categories = categories;
-        var promise = MenuDataService.getAllCategories();
-        promise.then(function(categories){
-            console.log("controller promise.then", categories);
-            main.categories = categories;
-            }
-        );
+        main.categories = categories;
 
         console.log("Controller main.categories", main.categories);
         //
     }
 
 })();
+
+/*var promise = MenuDataService.getAllCategories();
+ promise.then(function(categories){
+ console.log("controller promise.then", categories);
+ main.categories = categories;
+ }
+ );*/
