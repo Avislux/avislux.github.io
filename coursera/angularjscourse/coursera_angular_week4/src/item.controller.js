@@ -9,8 +9,8 @@
     function ItemController(items) {
         console.log("item Controller Init");
         var itemCtrl = this;
-        console.log("itemctrl item", item);
-        itemCtrl.items = items;
+        console.log("itemctrl item", items.menu_items);
+        itemCtrl.items = items.menu_items;
         console.log("Controller itemctrl.items", itemCtrl.items);
         //
     }

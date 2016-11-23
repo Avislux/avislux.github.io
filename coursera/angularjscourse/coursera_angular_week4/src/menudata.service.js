@@ -21,10 +21,12 @@
             );
         };
         //- this method should return a promise which is a result of using the $http service, using the following REST API endpoint: https://davids-restaurant.herokuapp.com/categories.json
-        service.getItemsForCategory = function( categoryShortName){
+        service.getItemsForCategory = function(categoryShortName){
+            console.log("requesting", categoryShortName);
             return $http({
                     method:"GET",
-                    url:('https://davids-restaurant.herokuapp.com/menu_items.json?category=' + categoryShortName),
+                    url:('https://davids-restaurant.herokuapp.com/menu_items.json?'),
+                    params:{category:categoryShortName}
                 }
 
             ).then(function (result) {

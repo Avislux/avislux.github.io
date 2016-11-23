@@ -28,14 +28,15 @@
 
             )
             .state('items',{
-                    url:'/items/{categoryShortName}',
-                    templateUrl: 'templates/items.templates.html',
-                    controller: "ItemController as itemCtrl",
+                    url:'/items/:categoryShortName',
+                    templateUrl: 'templates/main.items.template.html',
+                    controller: 'ItemController as itemCtrl',
                     resolve: {
-                        items: ['MenuDataService', function (MenuDataService, categoryShortName) {
-                            console.log("items resolved called", categoryShortName);
-
-                            return MenuDataService.getItemsForCategory(categoryShortName);
+                        items: [ /*'$stateParams',*/'MenuDataService',
+                            function (MenuDataService/*, $stateParams*/) {
+                               // console.log("items resolved called stateparmas", $stateParams);
+                               // console.log("items resolved called", $stateParams.categoryShortName);
+                                return MenuDataService.getItemsForCategory('L');
                         }]
                     }
                 }
