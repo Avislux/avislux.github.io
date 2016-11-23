@@ -32,11 +32,11 @@
                     templateUrl: 'templates/main.items.template.html',
                     controller: 'ItemController as itemCtrl',
                     resolve: {
-                        items: [ /*'$stateParams',*/'MenuDataService',
-                            function (MenuDataService/*, $stateParams*/) {
-                               // console.log("items resolved called stateparmas", $stateParams);
+                        items: [ 'MenuDataService','$stateParams',
+                            function (MenuDataService, $stateParams) {
+                                console.log("items resolved called stateparmas", $stateParams);
                                // console.log("items resolved called", $stateParams.categoryShortName);
-                                return MenuDataService.getItemsForCategory('L');
+                                return MenuDataService.getItemsForCategory($stateParams.categoryShortName);
                         }]
                     }
                 }
