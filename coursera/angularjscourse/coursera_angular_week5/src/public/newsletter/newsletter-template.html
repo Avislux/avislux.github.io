@@ -1,0 +1,27 @@
+<div id="main-content" class="container">
+    <h2>Newsletter Registration</h2>
+    <form name="regForm"  novalidate>
+        <fieldset class="col-lg-4">
+            <input name="firstName" type="text" required placeholder="First name" ng-model="newsCtrl.firstName" class="col-lg-4 form-control">
+            <input name="lastNAme" type="text" required placeholder="Last name" ng-model="newsCtrl.lastName" class="form-control">
+            <input name="email" type="email" required placeholder="Email Address" ng-model="newsCtrl.email" class="form-control">
+            <span ng-if="regForm.email.$invalid && regForm.email.$touched">
+                Must be a valid email address: handle@domain format</span>
+            <input name="phone" type="text" required placeholder="phone" ng-model="newsCtrl.phone" class="form-control"  pattern="(\d{3})-(\d{3})-(\d{4})">
+            <span ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+                Phone must be in the format ###-###-####.
+              </span>
+            <br>
+            <input name="shortName" type="text" required placeholder="Favorite dish short name" ng-model="newsCtrl.favShortName" class="form-control" pattern="(A|B|L|SP|C|F|V|DK|VG|CU|NL|NF|PF|FR|CM|FY|SO|DS|D|SR)"> <!--TODO: Add regex pattern or something -->
+            <span ng-if="regForm.shortName.$invalid && regForm.shortName.$touched">No such menu number exists<br></span>
+            <button ng-disabled="regForm.$invalid" ng-click="newsCtrl.submit()">Submit</button>
+        </fieldset>
+    </form>
+    <div ng-if="newsCtrl.regCompleted">Your information has been saved.</div>
+</div>
+
+
+<!--
+irst name, last name, email address, and phone number. It should also ask the user to specify the menu number that's their favorite dish. (The menu number is the short_name attribute of each menu item).
+A|B|L|SP|C|F|V|DK|VG|CU|NL|NF|PF|FR|CM|FY|SO|DS|D|SR
+-->

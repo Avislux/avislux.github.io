@@ -1,0 +1,15 @@
+<div class="container">
+    <div id="info" ng-if="newsCtrl.regCompleted">
+        Name: {{ newsCtrl.firstName}} {{newsCtrl.lastName}} <br>
+        Email: {{newsCtrl.email}} <br>
+        Phone: {{ newsCtrl.phone }} <br>
+        Favorite: {{ newsCtrl.favShortName}}
+    </div>
+    <div ng-hide="newsCtrl.regCompleted">Not Signed Up Yet. <a href="#/signup">Sign up Now!</a></div>
+</div>
+<!--
+news.firstName = "";
+news.lastName = "";
+news.email = "";
+news.phone = "";
+news.favShortName = "";-->

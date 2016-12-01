@@ -11,6 +11,7 @@ function MenuService($http, ApiPath) {
 
   service.getCategories = function () {
     return $http.get(ApiPath + '/categories.json').then(function (response) {
+      console.log("resolving from", ApiPath, "/categories.json");
       return response.data;
     });
   };
@@ -23,6 +24,7 @@ function MenuService($http, ApiPath) {
     }
 
     return $http.get(ApiPath + '/menu_items.json', config).then(function (response) {
+      console.log("resolving from", ApiPath, "/menu_items.json");
       return response.data;
     });
   };
