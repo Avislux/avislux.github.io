@@ -1,2 +1,8 @@
 _site/*
 *Thumbs.db
+coursera/test/*
+.idea/
+angular.js
+angular.min.js
+jquery-3.0.0.min.js
+jquery-ui.min.js
